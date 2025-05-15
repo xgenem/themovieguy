@@ -1,6 +1,16 @@
-import { Text, View } from "react-native";
+import MovieList from "@/components/MovieList";
+import React, { Suspense } from "react";
+import { ActivityIndicator, View } from "react-native";
 
 export default function Index() {
+  return (
+    <Suspense fallback={<Loading />}>
+      <MovieList />
+    </Suspense>
+  );
+}
+
+function Loading() {
   return (
     <View
       style={{
@@ -9,7 +19,7 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      <ActivityIndicator size="large" color="#003f02" />
     </View>
   );
 }
