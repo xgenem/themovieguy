@@ -1,4 +1,4 @@
-import MovieList from "@/components/MovieList";
+import MovieList from "@/components/views/MovieList";
 import React, { Suspense } from "react";
 import { ActivityIndicator, View } from "react-native";
 
