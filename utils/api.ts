@@ -13,11 +13,17 @@ const API = axios.create({
 
 API.interceptors.request.use(
   (config) => {
-    console.log("Request: ", config);
+    if (__DEV__) {
+      console.log("Request: ", config);
+    }
+
     return config;
   },
   (error) => {
-    console.error("Request error: ", error);
+    if (__DEV__) {
+      console.error("Request error: ", error);
+    }
+
     return Promise.reject(error);
   }
 );
