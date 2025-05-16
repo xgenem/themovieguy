@@ -1,5 +1,7 @@
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Stack } from "expo-router";
+import { Stack, useRouter } from "expo-router";
+import { Pressable } from "react-native";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -15,6 +17,8 @@ const queryClient = new QueryClient({
 });
 
 export default function RootLayout() {
+  const router = useRouter();
+
   return (
     <QueryClientProvider client={queryClient}>
       <Stack
@@ -31,7 +35,31 @@ export default function RootLayout() {
         <Stack.Screen
           name="movies/[id]"
           options={{
-            presentation: "modal",
+            animation: "fade",
+            headerTransparent: true,
+            headerTitle: "",
+            headerLeft: () => {
+              return (
+                <Pressable onPress={() => router.back()}>
+                  <Ionicons name="chevron-back" size={28} color="#fff" />
+                </Pressable>
+              );
+            },
+          }}
+        />
+        <Stack.Screen
+          name="tv/[id]"
+          options={{
+            animation: "fade",
+            headerTransparent: true,
+            headerTitle: "",
+            headerLeft: () => {
+              return (
+                <Pressable onPress={() => router.back()}>
+                  <Ionicons name="chevron-back" size={28} color="#fff" />
+                </Pressable>
+              );
+            },
           }}
         />
       </Stack>

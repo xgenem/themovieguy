@@ -9,11 +9,11 @@ import { ActivityIndicator, Button, Pressable, View } from "react-native";
 export default function Index() {
   const router = useRouter();
 
-  const [filter, setFilter] = useState("tv");
+  const [filter, setFilter] = useState("movie");
   const { data: movies = [], isLoading } = useQuery({
     queryKey: ["movies", filter],
     queryFn: async () => await fetchAllMovies(filter),
-    select: (data) => data.results as Movie[],
+    select: (data) => data.results as Show[],
   });
 
   const onSelectFilter = (filter: string) => {
@@ -21,14 +21,17 @@ export default function Index() {
   };
 
   const handlePressMovie = useCallback(
-    (movieId: number) => {
-      console.log("Movie ID", movieId);
-      router.push(`/movies/${movieId}`);
+    (id: number) => {
+      if (filter === "movie") {
+        router.push(`/movies/${id}`);
+      } else {
+        router.push(`/tv/${id}`);
+      }
     },
-    [router]
+    [filter, router]
   );
 
-  const renderItem = useCallback<ListRenderItem<Movie>>(
+  const renderItem = useCallback<ListRenderItem<Show>>(
     ({ item }) => (
       <Pressable key={item.id} onPress={() => handlePressMovie(item.id)}>
         <MovieCard movie={item} />

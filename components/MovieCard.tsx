@@ -1,9 +1,7 @@
+import { blurhash } from "@/constants/blurhash";
 import { Image } from "expo-image";
 import { Text, View } from "react-native";
 import Space from "./ui/Space";
-
-const blurhash =
-  "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
 
 export default function MovieCard({ movie }: { movie: Movie }) {
   const { title, name, poster_path: cover } = movie;
@@ -24,7 +22,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
           height: 300,
           borderRadius: 15,
         }}
-        placeholder={{ blurhash }}
+        placeholder={{ blurhash: blurhash }}
         contentFit="cover"
         transition={1000}
       />
