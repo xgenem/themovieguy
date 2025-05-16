@@ -28,6 +28,12 @@ export default function RootLayout() {
             headerBlurEffect: undefined,
           }}
         />
+        <Stack.Screen
+          name="movies/[id]"
+          options={{
+            presentation: "modal",
+          }}
+        />
       </Stack>
     </QueryClientProvider>
   );

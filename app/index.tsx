@@ -2,10 +2,13 @@ import { fetchAllMovies } from "@/api/movies";
 import MovieCard from "@/components/MovieCard";
 import { FlashList, ListRenderItem } from "@shopify/flash-list";
 import { useQuery } from "@tanstack/react-query";
+import { useRouter } from "expo-router";
 import React, { useCallback, useState } from "react";
-import { ActivityIndicator, Button, View } from "react-native";
+import { ActivityIndicator, Button, Pressable, View } from "react-native";
 
 export default function Index() {
+  const router = useRouter();
+
   const [filter, setFilter] = useState("tv");
   const { data: movies = [], isLoading } = useQuery({
     queryKey: ["movies", filter],
@@ -17,9 +20,21 @@ export default function Index() {
     setFilter(filter);
   };
 
+  const handlePressMovie = useCallback(
+    (movieId: number) => {
+      console.log("Movie ID", movieId);
+      router.push(`/movies/${movieId}`);
+    },
+    [router]
+  );
+
   const renderItem = useCallback<ListRenderItem<Movie>>(
-    ({ item }) => <MovieCard key={item.id} movie={item} />,
-    []
+    ({ item }) => (
+      <Pressable key={item.id} onPress={() => handlePressMovie(item.id)}>
+        <MovieCard movie={item} />
+      </Pressable>
+    ),
+    [handlePressMovie]
   );
 
   if (isLoading) {
