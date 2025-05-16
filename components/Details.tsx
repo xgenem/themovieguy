@@ -66,7 +66,7 @@ export default function Details({
                 fontWeight: "700",
               }}
             >
-              {show?.media_type === "tv" ? show?.name : show?.title} (
+              {show?.name || show?.title || ""} (
               {dayjs(show?.release_date).year()})
             </Text>
             <Space size={16} />
