@@ -1,5 +1,5 @@
 import { fetchAllMovies } from "@/api/movies";
-import MovieCard from "@/components/MovieCard";
+import ShowCard from "@/components/ShowCard";
 import { FlashList, ListRenderItem } from "@shopify/flash-list";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "expo-router";
@@ -34,7 +34,7 @@ export default function Index() {
   const renderItem = useCallback<ListRenderItem<Show>>(
     ({ item }) => (
       <Pressable key={item.id} onPress={() => handlePressMovie(item.id)}>
-        <MovieCard movie={item} />
+        <ShowCard show={item} />
       </Pressable>
     ),
     [handlePressMovie]
