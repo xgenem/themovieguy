@@ -80,6 +80,8 @@ export default function Details({
             </Text>
           </View>
         )}
+
+        <Space size={100} />
       </ScrollView>
     </ImageBackground>
   );

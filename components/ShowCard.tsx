@@ -1,4 +1,5 @@
 import { blurhash } from "@/constants/blurhash";
+import { Colors } from "@/theme/colors";
 import dayjs from "dayjs";
 import { Image } from "expo-image";
 import { Text, View } from "react-native";
@@ -36,7 +37,7 @@ export default function ShowCard({ show }: { show: Show }) {
             bottom: -20,
             left: 10,
             backgroundColor: "rgba(0, 0, 0, 0.8)",
-            borderColor: "rgb(0, 160, 0)",
+            borderColor: Colors.PRIMARY,
             borderWidth: 3,
             padding: 5,
             borderRadius: 45,
