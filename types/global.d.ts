@@ -1,9 +1,11 @@
+export {};
 declare global {
+  type ShowType = (typeof ShowTypes)[keyof typeof ShowTypes];
   interface Show {
     id: number;
     backdrop_path: string;
     overview: string;
-    media_type: string;
+    media_type: ShowType;
     name?: string;
     poster_path: string;
     release_date: string;
@@ -11,5 +13,3 @@ declare global {
     vote_average: number;
   }
 }
-
-export {};
