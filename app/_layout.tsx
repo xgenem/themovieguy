@@ -1,6 +1,7 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Stack, useRouter } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import { Pressable } from "react-native";
 
 const queryClient = new QueryClient({
@@ -23,7 +24,7 @@ export default function RootLayout() {
     <QueryClientProvider client={queryClient}>
       <Stack
         screenOptions={{
-          title: "The Movie Guy",
+          title: "The Movie Guy by xgenem",
         }}
       >
         <Stack.Screen
@@ -38,10 +39,11 @@ export default function RootLayout() {
             animation: "fade",
             headerTransparent: true,
             headerTitle: "",
-            headerLeft: () => {
+            headerBackVisible: false,
+            headerRight: () => {
               return (
                 <Pressable onPress={() => router.back()}>
-                  <Ionicons name="chevron-back" size={28} color="#fff" />
+                  <Ionicons name="close" size={28} color="#fff" />
                 </Pressable>
               );
             },
@@ -53,16 +55,18 @@ export default function RootLayout() {
             animation: "fade",
             headerTransparent: true,
             headerTitle: "",
-            headerLeft: () => {
+            headerBackVisible: false,
+            headerRight: () => {
               return (
                 <Pressable onPress={() => router.back()}>
-                  <Ionicons name="chevron-back" size={28} color="#fff" />
+                  <Ionicons name="close" size={28} color="#fff" />
                 </Pressable>
               );
             },
           }}
         />
       </Stack>
+      <StatusBar style="auto" />
     </QueryClientProvider>
   );
 }
