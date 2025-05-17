@@ -1,4 +1,5 @@
 import { blurhash } from "@/constants/blurhash";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import dayjs from "dayjs";
 import { Image, ImageBackground } from "expo-image";
 import React from "react";
@@ -10,6 +11,7 @@ import {
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import Button from "./ui/Button";
 import Space from "./ui/Space";
 
 export default function Details({
@@ -80,7 +82,19 @@ export default function Details({
             </Text>
           </View>
         )}
+        <Space size={20} />
 
+        <View
+          style={{
+            alignItems: "center",
+            marginHorizontal: 20,
+          }}
+        >
+          <Button.Secondary
+            iconLeft={<Ionicons name="play" size={50} color="#fff" />}
+            title="Play Trailer"
+          />
+        </View>
         <Space size={100} />
       </ScrollView>
     </ImageBackground>
