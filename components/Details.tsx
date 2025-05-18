@@ -35,14 +35,14 @@ export default function Details({
       blurRadius={10}
       placeholder={{ blurhash: blurhash }}
     >
-      <ScrollView style={{ flex: 1, backgroundColor: "#00000055" }}>
-        {isLoading ? (
-          <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <ActivityIndicator size="large" color="#fff" />
-          </View>
-        ) : (
+      {isLoading ? (
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <ActivityIndicator size="large" color="#fff" />
+        </View>
+      ) : (
+        <ScrollView style={{ flex: 1, backgroundColor: "#00000055" }}>
           <View
             style={{
               marginHorizontal: 20,
@@ -81,22 +81,22 @@ export default function Details({
               {show?.overview}
             </Text>
           </View>
-        )}
-        <Space size={20} />
+          <Space size={20} />
 
-        <View
-          style={{
-            alignItems: "center",
-            marginHorizontal: 20,
-          }}
-        >
-          <Button.Secondary
-            iconLeft={<Ionicons name="play" size={50} color="#fff" />}
-            title="Play Trailer"
-          />
-        </View>
-        <Space size={100} />
-      </ScrollView>
+          <View
+            style={{
+              alignItems: "center",
+              marginHorizontal: 20,
+            }}
+          >
+            <Button.Secondary
+              iconLeft={<Ionicons name="play" size={50} color="#fff" />}
+              title="Play Trailer"
+            />
+          </View>
+          <Space size={100} />
+        </ScrollView>
+      )}
     </ImageBackground>
   );
 }
