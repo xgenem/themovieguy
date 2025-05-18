@@ -13,5 +13,5 @@ export default function MovieDetailsScreen() {
     select: (data) => data as Show,
   });
 
-  return <Details isLoading={isLoading} show={data} />;
+  return <Details isLoading={isLoading} show={data} type="movie" />;
 }

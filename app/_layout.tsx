@@ -65,6 +65,21 @@ export default function RootLayout() {
             },
           }}
         />
+        <Stack.Screen
+          name="trailer/[id]"
+          options={{
+            headerTransparent: true,
+            headerTitle: "",
+            headerBackVisible: false,
+            headerLeft: () => {
+              return (
+                <Pressable onPress={() => router.back()}>
+                  <Ionicons name="arrow-back" size={28} color="#fff" />
+                </Pressable>
+              );
+            },
+          }}
+        />
       </Stack>
       <StatusBar style="auto" />
     </QueryClientProvider>

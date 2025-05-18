@@ -2,6 +2,7 @@ import { blurhash } from "@/constants/blurhash";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import dayjs from "dayjs";
 import { Image, ImageBackground } from "expo-image";
+import { router } from "expo-router";
 import React from "react";
 import {
   ActivityIndicator,
@@ -17,14 +18,18 @@ import Space from "./ui/Space";
 export default function Details({
   isLoading,
   show,
+  type,
 }: {
   isLoading: boolean;
   show?: Show;
+  type: string;
 }) {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const backdrop = `${process.env.EXPO_PUBLIC_TMDB_IMG_PATH}${show?.backdrop_path}`;
   const poster = `${process.env.EXPO_PUBLIC_TMDB_IMG_PATH}${show?.poster_path}`;
+
+  console.log("show", show);
 
   return (
     <ImageBackground
@@ -92,6 +97,9 @@ export default function Details({
             <Button.Secondary
               iconLeft={<Ionicons name="play" size={50} color="#fff" />}
               title="Play Trailer"
+              onPress={() => {
+                router.push(`/trailer/${show?.id}?type=${type}`);
+              }}
             />
           </View>
           <Space size={100} />

@@ -12,4 +12,12 @@ declare global {
     title: string;
     vote_average: number;
   }
+
+  interface Trailer {
+    name: string;
+    key: string;
+    site: string;
+    type: string;
+    official: boolean;
+  }
 }
