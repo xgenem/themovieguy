@@ -19,5 +19,6 @@ declare global {
     site: string;
     type: string;
     official: boolean;
+    published_at: string;
   }
 }

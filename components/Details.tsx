@@ -1,8 +1,7 @@
 import { blurhash } from "@/constants/blurhash";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { Colors } from "@/theme/colors";
 import dayjs from "dayjs";
 import { Image, ImageBackground } from "expo-image";
-import { router } from "expo-router";
 import React from "react";
 import {
   ActivityIndicator,
@@ -12,7 +11,7 @@ import {
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import Button from "./ui/Button";
+import Trailer from "./Trailer";
 import Space from "./ui/Space";
 
 export default function Details({
@@ -28,8 +27,6 @@ export default function Details({
   const { width } = useWindowDimensions();
   const backdrop = `${process.env.EXPO_PUBLIC_TMDB_IMG_PATH}${show?.backdrop_path}`;
   const poster = `${process.env.EXPO_PUBLIC_TMDB_IMG_PATH}${show?.poster_path}`;
-
-  console.log("show", show);
 
   return (
     <ImageBackground
@@ -88,7 +85,7 @@ export default function Details({
           </View>
           <Space size={20} />
 
-          <View
+          {/* <View
             style={{
               alignItems: "center",
               marginHorizontal: 20,
@@ -101,7 +98,24 @@ export default function Details({
                 router.push(`/trailer/${show?.id}?type=${type}`);
               }}
             />
+          </View> */}
+          <View
+            style={{
+              marginHorizontal: 20,
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: "600",
+                color: Colors.WHITE,
+              }}
+            >
+              Watch Trailer:
+            </Text>
           </View>
+          <Space size={8} />
+          <Trailer id={show?.id} type={type} />
           <Space size={100} />
         </ScrollView>
       )}
