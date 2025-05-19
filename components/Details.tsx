@@ -21,7 +21,7 @@ export default function Details({
 }: {
   isLoading: boolean;
   show?: Show;
-  type: string;
+  type: ShowType;
 }) {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
