@@ -1,6 +1,9 @@
+import { ShowTypes } from "@/constants/showTypes";
+
 export {};
 declare global {
   type ShowType = (typeof ShowTypes)[keyof typeof ShowTypes];
+
   interface Show {
     id: number;
     backdrop_path: string;
