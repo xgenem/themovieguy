@@ -55,7 +55,6 @@ export default function Index() {
   return (
     <FlashList
       data={movies}
-      extraData={movies}
       renderItem={renderItem}
       estimatedItemSize={200}
       contentContainerStyle={{
